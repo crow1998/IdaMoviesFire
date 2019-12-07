@@ -1,0 +1,34 @@
+<div
+  class="cast__card"
+  *ngIf="!(isLoading$ | async)">
+  <div class="container">
+    <mat-card>
+      <img
+        mat-card-image
+        class="mobile__image"
+        [src]="posterUrl + castProfile.profile_path"
+        alt>
+      <mat-card-header>
+        <img
+          class="desktop__image"
+          [src]="posterUrl + castProfile.profile_path"
+          alt>
+        <mat-card-title>
+          <div>{{castProfile.name}}</div>
+          <div class="cast__info">
+            <p>{{castProfile.birthday | date}} <span *ngIf="castProfile.deathday"> - {{castProfile.deathday | date}}</span></p>
+            <p class="cast__adress">{{castProfile.place_of_birth}}</p>
+            <p class="cast__biography">{{castProfile.biography}}</p>
+          </div>
+        </mat-card-title>
+
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+
+        <app-movie-list></app-movie-list>
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+</div>

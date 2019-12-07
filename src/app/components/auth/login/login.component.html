@@ -1,0 +1,61 @@
+<div
+  class="login-container"
+  fxLayout
+  fxLayoutAlign="center center"
+  *ngIf="!(isLoading$ | async)">
+  <mat-card>
+    <mat-card-title>Sign In</mat-card-title>
+    <mat-card-content>
+      <form
+        #form="ngForm"
+        (ngSubmit)="onFormSubmit(form)"
+        fxLayout="column"
+        fxLayoutGap="10px">
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Email"
+            name="Email"
+            ngModel
+            required
+            email>
+          <mat-error>Email Required</mat-error>
+        </mat-form-field>
+        <mat-form-field hintLabel="Password Strength">
+          <input
+            matInput
+            placeholder="Password"
+            ngModel
+            required
+            minlength="8"
+            #password
+            name="Password"
+            [type]="passHide ? 'password' : 'text'">
+          <button
+            type="button"
+            mat-icon-button
+            matSuffix
+            (click)="passHide = !passHide">
+            <mat-icon>
+              {{passHide ? 'visibility_off' : 'visibility'}}
+            </mat-icon>
+          </button>
+          <mat-error>
+            Password Must be Longer than 8 Characters
+          </mat-error>
+          <mat-hint align="end">{{password.value?.length || 0}} / 8</mat-hint>
+        </mat-form-field>
+        <button
+          [disabled]="form.invalid"
+          class="login-btn"
+          color="primary"
+          mat-raised-button
+          type="submit">
+          Login
+        </button>
+
+      </form>
+
+    </mat-card-content>
+  </mat-card>
+</div>

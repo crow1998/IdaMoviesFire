@@ -1,0 +1,12 @@
+{
+  "hosting": {
+    "public": "dist/IDa-Movies",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

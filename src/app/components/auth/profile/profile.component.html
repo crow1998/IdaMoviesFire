@@ -1,0 +1,78 @@
+<div
+  class="user__profile"
+  *ngIf="user">
+  <div class="container">
+    <mat-card>
+      <div class="photo__cont mobile__image">
+        <img
+          mat-card-image
+          [src]="newProfilePhotoUrl ? newProfilePhotoUrl
+            : (profilePhotoUrl
+            ? profilePhotoUrl
+            : '../../../../assets/img/user__empty.jpg')"
+          alt>
+        <div>
+          <a (click)="photo.click()">Change Profile Photo</a>
+        </div>
+      </div>
+
+      <mat-card-header>
+        <div class="photo__cont desktop__image">
+          <img
+            [src]="newProfilePhotoUrl ? newProfilePhotoUrl
+              : (profilePhotoUrl
+              ? profilePhotoUrl
+              : '../../../../assets/img/user__empty.jpg')"
+            alt>
+          <div>
+            <a (click)="photo.click()">Change Profile Photo</a>
+          </div>
+        </div>
+
+        <mat-card-title>
+          <div style="text-transform: capitalize;">{{user.FirstName}} {{user.LastName}}</div>
+          <div class="birthDate">
+            {{(user.BirthDate.seconds * 1000) | date}}
+          </div>
+          <form
+            #form="ngForm"
+            (ngSubmit)="onFormSubmit(form, photo?.files[0])">
+            <mat-form-field hintLabel="Password Strength">
+              <input
+                matInput
+                placeholder="New Password"
+                ngModel
+                minlength="8"
+                #password
+                name="Password">
+              <button
+                type="button"
+                mat-icon-button
+                matSuffix>
+              </button>
+              <mat-error>
+                Password Must be Longer than 8 Characters
+              </mat-error>
+              <mat-hint align="end">{{password.value?.length || 0}} / 8</mat-hint>
+            </mat-form-field>
+            <input
+              type="file"
+              #photo
+              hidden
+              accept=".png,.jpg"
+              (change)="onPhotoChange(photo?.files[0])">
+            <button
+              [disabled]="form.invalid"
+              class="login-btn"
+              color="primary"
+              mat-raised-button
+              type="submit">
+              Save Changes
+            </button>
+          </form>
+        </mat-card-title>
+
+      </mat-card-header>
+    </mat-card>
+  </div>
+</div>

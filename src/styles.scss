@@ -1,0 +1,130 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~bootstrap/dist/css/bootstrap-grid.css';
+@import '~animate.css/animate.min.css';
+
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+@import '~@angular/material/theming';
+@include mat-core();
+
+
+@import './themes/blue.scss';
+@import './themes/orange.scss';
+@import './themes/green.scss';
+@import './themes/purple.scss';
+
+
+@import 'assets/scss/navigation.scss';
+@import 'assets/scss/auth.scss';
+@import 'assets/scss/sliders.scss';
+
+@mixin themed-components($theme) {
+  @include navigation-theme($theme);
+  @include auth-theme($theme);
+  @include sliders-theme($theme);
+}
+
+.blue__theme {
+  @include angular-material-theme($blue-theme);
+  @include themed-components($blue-theme);
+}
+.green__theme {
+  @include angular-material-theme($green-theme);
+  @include themed-components($green-theme);
+}
+.purple__theme {
+  @include angular-material-theme($purple-theme);
+  @include themed-components($purple-theme);
+}
+.orange__theme {
+  @include angular-material-theme($orange-theme);
+  @include themed-components($orange-theme);
+}
+
+@mixin movie-slider-theme($theme) {
+  // Extract the palettes you need from the theme definition.
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+
+  .cast__photo__container--text {
+
+    background: rgba($color: mat-color($primary), $alpha: 0.4);
+  }
+}
+
+
+
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  // min-height: 100vh;
+  height: 100%;
+}
+
+.home__big--slider .owl-theme .owl-nav {
+  position: absolute;
+  bottom: 2%;
+  right: 4%;
+
+  .owl-prev, .owl-next {
+    background: transparent;
+    outline: none !important;
+
+    i {
+      font-size: 40px;
+    }
+  }
+  .owl-prev:hover, .owl-next:hover {
+    background: transparent;
+    color: lightgray;
+  }
+}
+
+.cast--slider .owl-theme  {
+  max-height: 300px;
+
+  .owl-item {
+    overflow: hidden;
+  }
+
+  .owl-nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: -44px;
+
+    .owl-prev, .owl-next {
+      background: transparent;
+      outline: none !important;
+      color: rgba(0,0,0, 0.87);
+      margin: 0;
+      padding: 0;
+
+      i {
+        font-size: 40px;
+      }
+    }
+    .owl-prev:hover, .owl-next:hover {
+      background: transparent;
+      color: lightgray;
+    }
+  }
+
+}
+
+.mat-toolbar {
+  padding: 0 !important;
+}
+
+.cast__card {
+  .mat-card-header-text {
+    width: 100%;
+  }
+}
+

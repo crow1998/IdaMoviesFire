@@ -1,0 +1,3 @@
+$purple-primary: mat-palette($mat-purple);
+$purple-accent: mat-palette($mat-light-green);
+$purple-theme: mat-dark-theme($purple-primary, $purple-accent);

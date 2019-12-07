@@ -1,0 +1,106 @@
+<div *ngIf="!(isLoading$ | async)">
+  <div class="head__container">
+    <div class="bgImage__container">
+      <img
+        [src]="bgImageUrl + movie.backdrop_path"
+        alt>
+    </div>
+    <div class="container">
+      <div class="over__bg--container">
+        <div class="poster__container">
+          <img
+            class="posterImg"
+            [src]="posterUrl + movie.poster_path"
+            alt>
+        </div>
+        <div
+          class="video__container"
+          *ngIf="youtubeVideoUrl">
+          <iframe
+            class="e2e-iframe-trusted-src"
+            [src]="youtubeVideoUrl"
+            frameborder="0"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div
+    class="container"
+    style="margin: 20px auto">
+    <mat-card>
+      <mat-card-header
+        fxLayout
+        fxLayoutAlign="space-between center">
+        <mat-card-title>{{movie.title}}</mat-card-title>
+        <div
+          fxLayout
+          fxLayoutAlign="center center"
+          fxLayoutGap="15px">
+          <div
+            style="cursor: pointer; overflow: hidden;"
+            (click)="redirectToImdb()">
+            <div
+              matTooltip="See On Imdb"
+              fxLayout
+              fxLayoutAlign="space-between  center"
+              style="font-size: 24px;">
+              <span>{{movie.vote_average}}</span>
+              <mat-icon>star_rate</mat-icon>
+            </div>
+          </div>
+          <button
+            *ngIf="isAuth"
+            mat-icon-button
+            [matTooltip]="alreadyInWatchList ? 'Remove From WatchList' : 'Add To WatchList'"
+            [color]="alreadyInWatchList ? 'primary' : ''"
+            (click)="toggleWatchList()">
+            <mat-icon>watch_later</mat-icon>
+          </button>
+
+        </div>
+
+        <mat-card-subtitle>{{movie.tagline}}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-divider></mat-divider>
+      <mat-card-content></mat-card-content>
+      <div
+        fxLayout
+        fxLayoutAlign="space-between center">
+        <div>
+          <p class="category__title">Release Date: <span class="category__element">{{movie.release_date | date}}</span></p>
+          <p class="category__title">Budget:  <span class="category__element">{{movie.budget | currency}}</span></p>
+          <p class="category__title">Gross:   <span class="category__element">{{movie.revenue | currency}}</span></p>
+          <p class="category__title">Production Countries: <span
+              class="category__element"
+              *ngFor="let country of movie.production_countries; index as i">{{country.name}}<span *ngIf="i < movie.production_countries.length - 1">,</span> </span></p>
+          <p class="category__title">Runtime: <span class="category__element">{{movie.runtime | toHour }}</span></p>
+          <p class="category__title">Genres: <span
+              class="category__element"
+              *ngFor="let genre of movie.genres; index as i">{{genre.name}}<span *ngIf="i < movie.genres.length - 1">,</span></span></p>
+        </div>
+        <div
+          fxHide
+          fxShow.gt-sm
+          fxLayoutAlign="space-between center"
+          style="flex-wrap: wrap;">
+          <div *ngFor="let company of movie.production_companies">
+            <img
+              *ngIf="company.logo_path != null"
+              [src]="posterUrl + company.logo_path"
+              class="company__logo"
+              alt>
+          </div>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <p class="category__title">OverView</p>
+      <p>{{movie.overview}}</p>
+    </mat-card>
+  </div>
+  <app-cast></app-cast>
+  <app-movie-slider [movieType]="'similarMovies'"></app-movie-slider>
+
+</div>

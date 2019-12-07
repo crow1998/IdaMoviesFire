@@ -1,0 +1,133 @@
+.big_slide {
+  position: relative;
+  height: 65vh;
+  cursor: pointer;
+  transition: transform 300ms;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &--text {
+    position: absolute;
+    bottom: 20%;
+    font-size: 42px;
+    color: white;
+    font-weight: bold;
+    font-family: sans-serif;
+    left: 5%;
+  }
+}
+.popular__movies {
+  background: #181819;
+  padding-top: 60px;
+  padding-bottom: 40px;
+  margin-top: 50px;
+
+  .popular__items {
+    display: flex;
+
+    .popItem {
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+
+      img {
+        transition: transform 500ms;
+      }
+      &:hover {
+        img {
+          transform: scale(1.1);
+        }
+      }
+
+      .popular__item--title {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        color: white;
+        background: linear-gradient(to bottom, transparent, black);
+        padding: 20px;
+
+        p {
+          margin: 0;
+          font-size: 18px;
+        }
+
+        .pop__movie--rate {
+          font-size: 18px;
+          display: flex;
+          align-items: center;
+
+          .mat-icon {
+            font-size: 16px;
+            width: 16px;
+            height: 16px;
+          }
+        }
+      }
+    }
+
+    .popular__group1 {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      height: 100%;
+
+      .popular__item {
+        width: 50%;
+        padding-right: 20px;
+        padding-bottom: 20px;
+      }
+      img {
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+    .popular__group2 {
+      display: flex;
+      width: 100%;
+      height: 100%;
+
+      .popular__item--full {
+        width: 100%;
+
+        img {
+          width: 100%;
+          object-fit: contain;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .big_slide {
+    height: 75vh;
+  }
+}
+
+@media (max-width: 991px) {
+  .popular__items {
+    flex-direction: column;
+  }
+  .popular__item {
+    padding-right: 0 !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .popular__group1 {
+    flex-direction: column;
+  }
+  .popular__item {
+    width: 100% !important;
+  }
+}

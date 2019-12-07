@@ -1,0 +1,43 @@
+
+ .mat-toolbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10000;
+  }
+
+ .color__menu {
+    .color__menu--items {
+      display: flex;
+      margin: center;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      a {
+        width: 40px;
+        height: 40px;
+        background: black;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+
+      .item__blue {
+        background: #3F51B5;
+        margin-right: 8px;
+        margin-bottom: 8px;
+      }
+
+      .item__orange {
+        margin-bottom: 8px;
+        background: #F44336;
+      }
+      .item__green {
+        background: #009688;
+        margin-right: 8px;
+      }
+      .item__purple {
+        background: #9C27B0;
+      }
+    }
+
+  }

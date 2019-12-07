@@ -1,0 +1,15 @@
+
+$ida-primary: mat-palette($mat-red);
+$ida-accent:  mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$ida-warn:    mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$orange-theme: mat-dark-theme($ida-primary, $ida-accent, $ida-warn);
+
+
+// $orange-primary: mat-palette($mat-deep-orange);
+// $orange-accent: mat-palette($mat-teal, A100);
+// $orange-warn:  mat-palette($mat-red);
+// $orange-theme: mat-light-theme($orange-primary, $orange-accent, $orange-warn);

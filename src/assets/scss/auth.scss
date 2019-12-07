@@ -1,0 +1,156 @@
+@mixin auth-theme($theme) {
+
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $background: map-get($theme, background);
+
+  .login-container, .register__container {
+    .mat-card {
+      width: 80%;
+      margin-top: 50px;
+      text-align: center;
+      max-width: 400px;
+    }
+
+    .login-btn {
+      margin-top: 15px;
+    }
+  }
+
+  .user__profile {
+    margin-top: 20px;
+
+    .mat-card-header {
+      flex-direction: row-reverse;
+      justify-content: space-between;
+
+      .desktop__image {
+        display: none;
+
+        img {
+          width: 250px;
+          // height: 100%;
+          object-fit: contain;
+          border-radius: 4px;
+        }
+      }
+      .birthDate {
+        font-size: 14px;
+        font-style: italic;
+        color: mat-color($primary);
+        text-transform: capitalize;
+      }
+    }
+
+    .mobile__image {
+      img {
+        height: 350px;
+        object-fit: cover;
+      }
+    }
+
+    @media(min-width: 768px) {
+      .mobile__image {
+        display: none;
+      }
+      .desktop__image {
+        display: block !important;
+      }
+    }
+
+    .mat-card-header {
+      margin-bottom: 16px;
+    }
+    .mat-card-content {
+      margin-top: 32px;
+    }
+
+    .mat-form-field {
+      width: 100%;
+    }
+
+    .mat-card {
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .login-btn {
+      margin-top: 20px;
+    }
+
+    .photo__cont {
+      position: relative;
+
+      div {
+        background: #000000d1;
+        position: absolute;
+        bottom: 0;
+        height: 50px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        a {
+          color: white;
+          cursor: pointer;
+        }
+      }
+    }
+
+  }
+
+  .cast__card {
+    margin-top: 20px;
+
+    .mat-card-header {
+      flex-direction: row-reverse;
+      justify-content: space-between;
+
+      .desktop__image {
+        display: none;
+        width: 200px;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 4px;
+      }
+      .cast__info {
+        font-size: 14px;
+
+        .cast__adress {
+          font-style: italic;
+          color: mat-color($primary);
+        }
+
+        .cast__biography {
+          padding: 15px;
+          background-color: mat-color($background, app-bar);
+          border-radius: 4px;
+        }
+      }
+    }
+
+    .mobile__image {
+      height: 350px;
+      object-fit: cover;
+    }
+
+    @media(min-width: 768px) {
+      .mobile__image {
+        display: none;
+      }
+      .desktop__image {
+        display: block !important;
+      }
+    }
+
+    .mat-card-header {
+      margin-bottom: 16px;
+    }
+    .mat-card-content {
+      margin-top: 32px;
+    }
+  }
+
+
+}

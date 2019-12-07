@@ -1,0 +1,28 @@
+.color__menu {
+  display: flex;
+  padding: 0px 16px;
+  margin-top: 12px;
+
+  a {
+    width: 40px;
+    height: 40px;
+    margin-right: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .item__blue {
+    background: #3F51B5;
+  }
+
+  .item__orange {
+    background: #F44336;
+  }
+  .item__green {
+    background: #009688;
+  }
+  .item__purple {
+    background: #9C27B0;
+    margin-right: 0;
+  }
+}

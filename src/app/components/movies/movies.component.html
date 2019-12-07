@@ -1,0 +1,6 @@
+<div
+  class="container"
+  [style.display]="(isLoading$ | async) ? 'none' : 'block'">
+  <app-movie-search></app-movie-search>
+  <app-movie-list></app-movie-list>
+</div>

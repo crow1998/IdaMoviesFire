@@ -1,0 +1,22 @@
+<form
+  #form="ngForm"
+  (ngSubmit)="onSearch(form)"
+  class="search__form">
+  <mat-form-field>
+    <input
+      matInput
+      type="text"
+      #searchInput
+      name="keywords"
+      ngModel
+      placeholder="Search">
+  </mat-form-field>
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit">
+    Search
+  </button>
+  <div></div>
+
+</form>

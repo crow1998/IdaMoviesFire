@@ -1,0 +1,137 @@
+<mat-nav-list class="side__panel">
+  <div class="color__menu">
+    <a
+      (click)="changeTheme('blue__theme')"
+      class="item__blue"></a>
+    <a
+      (click)="changeTheme('orange__theme')"
+      class="item__orange"></a>
+    <a
+      (click)="changeTheme('green__theme')"
+      class="item__green"></a>
+    <a
+      (click)="changeTheme('purple__theme')"
+      class="item__purple"></a>
+  </div>
+  <mat-list-item
+    *ngIf="isAuth && user"
+    routerLink="/profile"
+    (click)="onCloseSideNav()"
+    class="mt">
+    <img
+      *ngIf="profilePhotoUrl?.length"
+      matListAvatar
+      [src]="profilePhotoUrl">
+    <div
+      *ngIf="!profilePhotoUrl?.length"
+      matListAvatar
+      class="profile__logo">
+      <p>{{user.FirstName[0] | uppercase}}{{user.LastName[0] | uppercase}}</p>
+    </div>
+    <h3
+      matLine
+      class="profile__name"> {{user.FirstName.toLowerCase()}} {{user.LastName.toLowerCase()}} </h3>
+  </mat-list-item>
+
+  <a
+    mat-list-item
+    routerLink="/"
+    routerLinkActive="link-active"
+    [routerLinkActiveOptions]="{exact: true}"
+    class="mt"
+    (click)="onCloseSideNav()">
+    <mat-icon>home</mat-icon>
+    Home
+  </a>
+  <!-- <a
+    mat-list-item
+    routerLink="/movies"
+    routerLinkActive="link-active"
+    (click)="onCloseSideNav()">
+    <mat-icon>movie</mat-icon>
+    Movies
+  </a> -->
+  <mat-accordion class="movies__accordion">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-icon>movie</mat-icon>
+        <mat-panel-title>Movies</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-nav-list>
+        <a
+          mat-list-item
+          routerLink="/movies/all_movies"
+          routerLinkActive="link-active"
+          (click)="onCloseSideNav()">
+          All Movies
+        </a>
+        <a
+          mat-list-item
+          routerLink="/movies/now_playing"
+          routerLinkActive="link-active"
+          (click)="onCloseSideNav()">
+          Now Playing Movies
+        </a>
+        <a
+          mat-list-item
+          routerLink="/movies/popular"
+          routerLinkActive="link-active"
+          (click)="onCloseSideNav()">
+          Popular Movies
+        </a>
+        <a
+          mat-list-item
+          routerLink="/movies/top_rated"
+          routerLinkActive="link-active"
+          (click)="onCloseSideNav()">
+          Top Rated Movies
+        </a>
+        <a
+          mat-list-item
+          routerLink="/movies/upcoming"
+          routerLinkActive="link-active"
+          (click)="onCloseSideNav()">
+          Upcoming Movies
+        </a>
+      </mat-nav-list>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <a
+    mat-list-item
+    routerLink="/watchLater"
+    routerLinkActive="link-active"
+    *ngIf="isAuth"
+    (click)="onCloseSideNav()">
+    <mat-icon>movie_filter</mat-icon>
+    Saved Movies
+  </a>
+  <a
+    mat-list-item
+    routerLink="/login"
+    routerLinkActive="link-active"
+    *ngIf="!isAuth && (isUserChecked$ | async)"
+    (click)="onCloseSideNav()">
+    <mat-icon>account_circle</mat-icon>
+    Login
+  </a>
+  <a
+    mat-list-item
+    routerLink="/register"
+    routerLinkActive="link-active"
+    *ngIf="!isAuth && (isUserChecked$ | async)"
+    (click)="onCloseSideNav()">
+    <mat-icon>how_to_reg</mat-icon>
+    Register
+  </a>
+  <a
+    mat-list-item
+    routerLink="/login"
+    routerLinkActive="link-active"
+    (click)="onLogout()"
+    *ngIf="isAuth">
+    <mat-icon>exit_to_app</mat-icon>
+    Logout
+  </a>
+
+</mat-nav-list>

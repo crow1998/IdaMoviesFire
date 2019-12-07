@@ -1,0 +1,29 @@
+<div
+  class="movie__slider"
+  *ngIf="movieSlider.length">
+  <div class="container">
+    <mat-card>
+      <mat-card-title>{{sliderTitle}}</mat-card-title>
+      <mat-card-content>
+        <owl-carousel-o
+          class="cast--slider"
+          [options]="customOptions">
+          <ng-container *ngFor="let movie of movieSlider">
+            <ng-template
+              carouselSlide
+              *ngIf="movie.poster_path">
+              <div class="cast__photo__container">
+                <img [src]="posterUrl + movie.poster_path">
+                <div class="cast__photo__container--text">
+                  <button (click)="getMovieDetails(movie)">
+                    <mat-icon>play_circle_filled</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

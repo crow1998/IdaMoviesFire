@@ -1,0 +1,23 @@
+<div [class]="theme$ | async">
+  <mat-drawer-container
+    class="example-container"
+    [hasBackdrop]="true">
+    <mat-drawer
+      [autoFocus]="false"
+      #drawer
+      mode="over">
+      <app-side-panel (closeSideNav)="drawer.close()"></app-side-panel>
+    </mat-drawer>
+    <mat-drawer-content (scroll)="fireScroll($event)">
+      <app-top-panel (toggleSideNav)="drawer.toggle()"></app-top-panel>
+
+      <div class="page-content">
+        <mat-progress-bar
+          *ngIf="isLoading$ | async"
+          mode="indeterminate"></mat-progress-bar>
+        <router-outlet></router-outlet>
+        <app-footer *ngIf="!(isLoading$ |async)"></app-footer>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>

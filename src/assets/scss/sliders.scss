@@ -1,0 +1,95 @@
+@mixin sliders-theme($theme) {
+
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  .movie__slider {
+    margin-top: 50px;
+
+  }
+
+  .cast__photo__container {
+    position: relative;
+    overflow: hidden;
+
+    &:hover {
+      .cast__photo__container--text {
+      bottom: 0;
+      }
+    }
+
+    &--text {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      bottom: -100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba($color: mat-color($primary), $alpha: 0.4);
+      transition: bottom 500ms;
+      button {
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+
+        mat-icon {
+          font-size: 60px;
+          width: 60px;
+          height: 60px;
+        }
+
+        &:hover, &:focus {
+          & {
+            color: mat-color($primary);
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+
+  .cast--slider {
+
+    img {
+      width: 100%;
+    }
+
+    .cast__container {
+      position: relative;
+      cursor: pointer;
+
+      &:hover {
+        .cast__container--text {
+        top: 0;
+        }
+      }
+
+      &--text {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: -100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba($color: mat-color($primary), $alpha: 0.4);
+        transition: top 500ms;
+        p {
+          color: white;
+          font-size: 20px;
+          text-align: center;
+        }
+
+      }
+    }
+
+  }
+
+
+}

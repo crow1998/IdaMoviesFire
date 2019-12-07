@@ -1,0 +1,65 @@
+<div *ngIf="!(isLoading$ | async)">
+  <owl-carousel-o
+    [options]="customOptions"
+    *ngIf="bigSlides.length"
+    class="home__big--slider">
+    <ng-container *ngFor="let bigSlide of bigSlides">
+      <ng-template carouselSlide>
+        <div
+          class="big_slide"
+          (click)="getMovieDetails(bigSlide.id)">
+          <img
+            [src]="bgImageUrl + bigSlide.backdrop_path"
+            alt>
+          <div class="big_slide--text">
+            <div>{{bigSlide.title}}</div>
+            <mat-icon>star_rate</mat-icon>
+            <span>{{bigSlide.vote_average}}</span>
+          </div>
+        </div>
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+  <app-movie-slider [movieType]="'topRatedMovies'"></app-movie-slider>
+  <div
+    class="popular__movies"
+    *ngIf="popularMoviesBlock.length">
+    <div class="container popular__items">
+      <div class="popular__group1">
+        <div
+          class="popular__item"
+          *ngFor="let popMovie of popularMoviesBlock">
+          <div
+            class="popItem"
+            (click)="getMovieDetails(popMovie.id)">
+            <img
+              [src]="bgImageUrl + popMovie.backdrop_path"
+              alt>
+            <div class="popular__item--title">
+              <p>{{popMovie.title}}</p>
+              <p class="pop__movie--rate"><mat-icon>star_rate</mat-icon>{{popMovie.vote_average}}</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="popular__group2">
+        <div
+          class="popular__item--full popItem"
+          (click)="getMovieDetails(popularMovieBlock.id)">
+          <img
+            [src]="bgImageUrl + popularMovieBlock.backdrop_path"
+            alt>
+          <div class="popular__item--title">
+            <p>{{popularMovieBlock.title}}</p>
+            <p class="pop__movie--rate"><mat-icon>star_rate</mat-icon>{{popularMovieBlock.vote_average}}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <app-movie-slider [movieType]="'upcomingMovies'"></app-movie-slider>
+</div>

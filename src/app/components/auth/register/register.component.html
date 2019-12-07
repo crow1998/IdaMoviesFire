@@ -1,0 +1,108 @@
+<div
+  class="register__container"
+  fxLayout
+  fxLayoutAlign="center center"
+  *ngIf="!(isLoading$ | async)">
+  <mat-card>
+    <mat-card-title>Sign Up</mat-card-title>
+    <mat-card-content>
+      <form
+        #form="ngForm"
+        (ngSubmit)="onFormSubmit(form, photo?.files[0])"
+        fxLayout="column"
+        fxLayoutGap="10px">
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="First Name"
+            name="FirstName"
+            ngModel
+            required>
+          <mat-error>First Name Required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Last Name"
+            name="LastName"
+            ngModel
+            required>
+          <mat-error>Last Name Required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Email"
+            name="Email"
+            ngModel
+            required
+            email>
+          <mat-error>Email Required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field hintLabel="Password Strength">
+          <input
+            matInput
+            placeholder="Password"
+            ngModel
+            required
+            minlength="8"
+            #password
+            name="Password"
+            [type]="passHide ? 'password' : 'text'">
+          <button
+            type="button"
+            mat-icon-button
+            matSuffix
+            (click)="passHide = !passHide">
+            <mat-icon>
+              {{passHide ? 'visibility_off' : 'visibility'}}
+            </mat-icon>
+          </button>
+          <mat-error>
+            Password Must be Longer than 8 Characters
+          </mat-error>
+          <mat-hint align="end">{{password.value?.length || 0}} / 8</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            required
+            matInput
+            ngModel
+            name="BirthDate"
+            [max]="maxDate"
+            [matDatepicker]="picker"
+            placeholder="Choose a Birthdate">
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <label for="file">Profile Photo</label>
+        <input
+          type="file"
+          #photo
+          accept=".png,.jpg">
+        <mat-checkbox
+          color="primary"
+          required
+          #checkbox>
+          Agree To Terms
+        </mat-checkbox>
+        <button
+          [disabled]="form.invalid || !checkbox.checked"
+          class="login-btn"
+          color="primary"
+          mat-raised-button
+          type="submit">
+          Register
+        </button>
+
+      </form>
+
+    </mat-card-content>
+  </mat-card>
+</div>

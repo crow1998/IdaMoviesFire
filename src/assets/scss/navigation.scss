@@ -1,0 +1,143 @@
+@mixin navigation-theme($theme) {
+
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  .top__panel {
+
+    .mat-list {
+      padding: 0;
+
+      .mat-list-item {
+        color: #fff;
+        cursor: pointer;
+        outline: none;
+
+        &:hover, &.link-active {
+          color: lightgray;
+
+          .bottom_line {
+            width: 80%;
+          }
+        }
+      }
+    }
+
+    .mat-list-item {
+      outline: none;
+      cursor: pointer;
+    }
+
+    .profile__logo {
+      position: relative;
+      background: white;
+
+      p {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: mat-color($primary);
+        margin: 0;
+      }
+    }
+
+    .bottom_line {
+      width: 0;
+      height: 2px;
+      position: absolute;
+      background: white;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: width 300ms;
+    }
+  }
+
+  .side__panel {
+    .movies__accordion {
+
+        .mat-list-item {
+          font-size: 14px;
+        }
+        .mat-expansion-panel {
+          box-shadow: none;
+        }
+        .mat-expansion-panel-body {
+          padding: 0;
+        }
+
+        .mat-expansion-panel-header {
+          padding: 0 16px;
+
+          .mat-content {
+            flex-direction: row-reverse;
+            align-items: center;
+          }
+        }
+      }
+
+      .mat-nav-list {
+        width: 100%;
+      }
+
+      .mt {
+        margin-top: 15px;
+      }
+
+      .mat-icon {
+        margin-right: 8px;
+      }
+
+      .link-active {
+        background: mat-color($primary);
+        color: white;
+      }
+
+      .profile__name {
+        text-transform: capitalize;
+      }
+
+      .profile__logo {
+        position: relative;
+        background: mat-color($primary);
+
+        p {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: white;
+          margin: 0;
+        }
+      }
+  }
+
+  .colorChange__icon {
+    .mat-list-item-content {
+      padding-right: 0 !important;
+    }
+  }
+
+  .footer {
+    background: #181819;
+
+    &-items {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+
+      p {
+        color: white;
+
+        a {
+          text-decoration: none;
+          color: mat-color($primary);
+          margin-left: 2px;
+        }
+      }
+    }
+  }
+
+}

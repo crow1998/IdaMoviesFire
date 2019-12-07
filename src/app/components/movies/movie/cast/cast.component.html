@@ -1,0 +1,27 @@
+<div class="container">
+  <mat-card>
+    <mat-card-title>Full Cast</mat-card-title>
+    <mat-card-content>
+      <owl-carousel-o
+        class="cast--slider"
+        [options]="customOptions"
+        *ngIf="cast.length">
+        <ng-container *ngFor="let castItem of cast">
+          <ng-template
+            carouselSlide
+            *ngIf="castItem.profile_path">
+            <div
+              class="cast__container"
+              (click)="getCastProfile(castItem.id)">
+              <img [src]="posterUrl + castItem.profile_path">
+              <div class="cast__container--text">
+                <p>{{castItem.name}}</p>
+              </div>
+            </div>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </mat-card-content>
+  </mat-card>
+
+</div>

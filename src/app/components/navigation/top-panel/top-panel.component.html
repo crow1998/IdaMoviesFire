@@ -1,0 +1,145 @@
+<mat-toolbar
+  color="primary"
+  class="top__panel">
+  <div
+    class="container"
+    fxLayout
+    fxLayoutAlign="space-between center">
+    <div
+      fxLayout
+      fxLayoutAlign="space-between center">
+      <button
+        fxHide.gt-xs
+        mat-icon-button
+        (click)="onToggleSideNav()">
+        <mat-icon>notes</mat-icon>
+      </button>
+      <mat-list-item routerLink="/">
+        <span>IDa Movies</span>
+      </mat-list-item>
+    </div>
+    <mat-list
+      fxLayout
+      fxLayoutAlign="left center"
+      fxHide
+      fxShow.gt-xs>
+      <!-- <mat-list-item
+        routerLink="/movies"
+        routerLinkActive="link-active">
+        Movies
+      </mat-list-item> -->
+      <mat-list-item>
+        <p [matMenuTriggerFor]="moviesMenu">Movies</p>
+        <div class="bottom_line"></div>
+        <mat-menu #moviesMenu="matMenu">
+          <button
+            routerLink="/movies/all_movies"
+            routerLinkActive="link-active"
+            mat-menu-item>
+            All Movies
+          </button>
+          <button
+            routerLink="/movies/now_playing"
+            routerLinkActive="link-active"
+            mat-menu-item>
+            Now Playing Movies
+          </button>
+          <button
+            routerLink="/movies/popular"
+            routerLinkActive="link-active"
+            mat-menu-item>
+            Popular Movies
+          </button>
+          <button
+            routerLink="/movies/top_rated"
+            routerLinkActive="link-active"
+            mat-menu-item>
+            Top Rated Movies
+          </button>
+          <button
+            routerLink="/movies/upcoming"
+            routerLinkActive="link-active"
+            mat-menu-item>
+            Upcoming Movies
+          </button>
+        </mat-menu>
+      </mat-list-item>
+      <mat-list-item
+        *ngIf="isAuth"
+        routerLink="/watchLater"
+        routerLinkActive="link-active">
+        Saved Movies
+        <div class="bottom_line"></div>
+      </mat-list-item>
+      <mat-list-item
+        *ngIf="!isAuth && (isUserChecked$ | async)"
+        routerLink="/login"
+        routerLinkActive="link-active">
+        Login
+        <div class="bottom_line"></div>
+      </mat-list-item>
+      <mat-list-item
+        *ngIf="!isAuth && (isUserChecked$ | async)"
+        routerLink="/register"
+        routerLinkActive="link-active">
+        Register
+        <div class="bottom_line"></div>
+      </mat-list-item>
+      <mat-list-item class="colorChange__icon">
+        <div
+          mat-icon-button
+          [matMenuTriggerFor]="colorMenu">
+          <mat-icon>format_color_fill</mat-icon>
+        </div>
+        <mat-menu #colorMenu="matMenu">
+          <div class="color__menu">
+            <div class="color__menu--items">
+              <a
+                (click)="changeTheme('blue__theme')"
+                class="item__blue"></a>
+              <a
+                (click)="changeTheme('orange__theme')"
+                class="item__orange"></a>
+            </div>
+            <div class="color__menu--items">
+              <a
+                (click)="changeTheme('green__theme')"
+                class="item__green"></a>
+              <a
+                (click)="changeTheme('purple__theme')"
+                class="item__purple"></a>
+            </div>
+          </div>
+        </mat-menu>
+      </mat-list-item>
+      <mat-list-item *ngIf="isAuth && user">
+        <img
+          *ngIf="profilePhotoUrl?.length"
+          [matMenuTriggerFor]="profileMenu"
+          matListAvatar
+          [src]="profilePhotoUrl">
+        <div
+          [matMenuTriggerFor]="profileMenu"
+          *ngIf="!profilePhotoUrl?.length"
+          matListAvatar
+          class="profile__logo">
+          <p>{{user.FirstName[0] | uppercase}}{{user.LastName[0] | uppercase}}</p>
+        </div>
+        <mat-menu #profileMenu="matMenu">
+          <a
+            routerLink="/profile"
+            routerLinkActive="link-active"
+            mat-menu-item>
+            Profile
+          </a>
+          <a
+            mat-menu-item
+            (click)="onLogout()">
+            Logout
+          </a>
+        </mat-menu>
+      </mat-list-item>
+
+    </mat-list>
+  </div>
+</mat-toolbar>
